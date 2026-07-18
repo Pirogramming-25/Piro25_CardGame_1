@@ -13,7 +13,18 @@
 - **도커이미지배포:** (도커 허브 링크를 삽입해주세요)
 
 ---
+## 프로젝트 시작
+'''
+git clone https://github.com/Pirogramming-25/Piro25_CardGame_1.git
+cd Piro25_CardGame_1
+git switch develop        # 기본 브랜치가 main일 수 있으니 develop으로 이동
 
+python -m venv venv
+source venv/bin/activate          # 윈도우: venv\Scripts\activate
+pip install -r requirements.txt
+
+cp .env.example .env              # 윈도우: copy .env.example .env
+'''
 ## 👥 팀원 및 역할 분담
 
 | 이름 | 담당 기능 |
