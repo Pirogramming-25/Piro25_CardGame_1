@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# 가상환경
+venv/
+.venv/
+env/
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+/media/
+/staticfiles/        # collectstatic 결과물
+local_settings.py
+
+# 환경변수 (소셜 키 유출 방지 — 필수)
+.env
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
