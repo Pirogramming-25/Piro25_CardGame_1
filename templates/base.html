@@ -65,12 +65,12 @@
 
     <!-- chrome bar 아래, 창 내부에 위치하는 제목 + nav -->
     <div class="window-titlebar">
-      <a href="#" class="logo">Piro25 card battle</a>
+      <a href="{% url 'game_list' %}" class="logo">Piro25 card battle</a>
 
       <nav>
         {% if user.is_authenticated %}
-          <a href="#">게임하기</a>
-          <a href="#">랭킹보기</a>
+          <a href="{% url 'game_list' %}">게임하기</a>
+          <a href="{% url 'ranking' %}">랭킹보기</a>
           <a href="{% url 'profile' %}" class="user-info">
             {{ user.username }}님
           </a>
