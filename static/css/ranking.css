@@ -123,6 +123,7 @@
 
 /* 전적목록 버튼 */
 .record-btn {
+  font-family: 'Galmuri9';
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -142,11 +143,6 @@
   height: 20px;
 }
 
-/* 버튼 옆에 겹쳐지는 유저 아바타 - HTML에 아래처럼 추가해주세요
-<span class="record-avatar">
-  <img src="..." alt="다희">
-</span>
-*/
 .record-avatar {
   position: absolute;
   right: -30px;
