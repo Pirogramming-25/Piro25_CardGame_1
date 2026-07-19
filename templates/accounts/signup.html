@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-6 text-gray-800">회원가입</h1>
+<form method="post" class="flex flex-col gap-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded font-semibold">회원가입</button>
+</form>
+{% endblock %}
