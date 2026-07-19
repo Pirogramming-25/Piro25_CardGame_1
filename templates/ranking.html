@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/ranking.css' %}">
+
+<div class="ranking-card">
+    <h2 class="ranking-title">Piro 명예의 전당</h2>
+
+    {% if users %}
+    <div class="podium">
+        {% for user in users|slice:":3" %}
+        <div class="podium-bar rank{{ forloop.counter }}">
+            <div class="podium-info">
+                <span class="podium-name">{{ user.username }}</span>
+                <span class="podium-score">{{ user.score }}</span>
+            </div>
+            <div class="podium-block">{{ forloop.counter }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="no-data">아직 랭킹 데이터가 없어요.</p>
+    {% endif %}
+
+    {% if users|length > 3 %}
+    <table class="ranking-rest">
+        {% for user in users|slice:"3:" %}
+        <tr>
+            <td class="rank-num">{{ forloop.counter|add:"3" }}</td>
+            <td class="rank-name">{{ user.username }}</td>
+            <td class="rank-score">{{ user.score }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    <a href="#" class="record-btn">전적 목록</a> 
+</div>
+{% endblock %}
