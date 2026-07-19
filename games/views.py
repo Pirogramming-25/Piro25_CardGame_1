@@ -9,8 +9,14 @@ from django.http import JsonResponse
 
 from .models import AttackRequest
 
+from accounts.models import User
+
 def attack_page(request):
-    return render(request, "attack.html")
+    users = User.objects.exclude(pk=request.user.pk)
+
+    return render(request, "attack.html", {
+        "users": users,
+    })
 
 def get_random_cards(request):
     if request.method != "GET":
