@@ -1,0 +1,16 @@
+/* 공통 인증 화면 */
+.auth-page {}
+.auth-card {}
+.auth-title {}
+
+/* 로그인·회원가입 공통 폼 */
+.auth-form {}
+.auth-submit-button {}
+
+/* 로그인 전용 */
+.auth-divider {}
+.kakao-login-button {}
+
+/* 프로필 전용 */
+.profile-card {}
+.profile-score {}
