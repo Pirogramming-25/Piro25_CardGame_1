@@ -10,10 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+load_dotenv(BASE_DIR / ".env")
 
 
 # Quick-start development settings - unsuitable for production
@@ -40,7 +44,24 @@ INSTALLED_APPS = [
     'accounts',
     'games',
     'ranking',
+    "django.contrib.sites",                        # allauth가 내부적으로 사용
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.kakao",
 ]
+
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",            # 기존 ID/PW 로그인용
+    "allauth.account.auth_backends.AuthenticationBackend",  # allauth 소셜 로그인용
+]
+
+# ── 소셜로그인 동작 설정 (중요!) ──
+SOCIALACCOUNT_LOGIN_ON_GET = True  # 버튼 클릭 시 중간 확인 페이지 없이 바로 카카오로 이동
+SOCIALACCOUNT_EMAIL_REQUIRED = False       # 카카오가 이메일을 안 줘도 가입 가능
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"  # 소셜 가입 시 이메일 인증 절차 생략
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -50,6 +71,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -120,3 +142,18 @@ USE_TZ = True
 STATIC_URL = 'static/'
 # accounts 앱에 커스텀 User
 AUTH_USER_MODEL = "accounts.User"
+
+# settings.py 맨 하단에 추가
+LOGIN_REDIRECT_URL = "profile"   # 로그인 성공 후 이동할 곳(urls.py의 profile 주소)
+LOGOUT_REDIRECT_URL = "login"    # 로그아웃 후 이동할 곳(urls.py의 login 주소)
+LOGIN_URL = "login"              # @login_required 걸린 페이지 접근 시 이동할 곳
+
+SOCIALACCOUNT_PROVIDERS = {
+    "kakao": {
+        "APP": {
+            "client_id": os.environ.get("KAKAO_REST_API_KEY"), # .env에서 읽어온 REST API 키
+            "secret": os.environ.get("KAKAO_CLIENT_SECRET"),   # .env에서 읽어온 Client Secret
+            "key": "",
+        }
+    }
+}
