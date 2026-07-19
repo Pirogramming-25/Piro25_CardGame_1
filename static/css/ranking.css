@@ -37,13 +37,12 @@
 }
 
 
-
 .ranking-list {
   list-style: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 22px;
+  gap: 15px;
   margin-bottom: 48px;
 }
 
@@ -129,40 +128,32 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: #c7fd97;
-  color: #17330a;
+  color: #c7fd97;;
+  border: 2.5px  solid #c7fd97;
   text-decoration: none;
   font-size: 20px;
   padding: 18px 40px;
-  border-radius: 40px;
+  border-radius: 10px;
   box-shadow: 0 0 20px rgba(199, 253, 151, 0.45);
+  transition: transform 0.15s ease;
+}
+
+.record-btn:hover {
+  transform: translateY(-3px);
+  background: #c7fd97;
+  color:#120c21;
 }
 
 .record-btn svg {
   width: 16px;
   height: 20px;
+  fill:#c7fd97;
 }
 
-.record-avatar {
-  position: absolute;
-  right: -30px;
-  bottom: -14px;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #fff;
-  border: 3px solid #17330a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+.record-btn svg:hover{
+  fill:#120c21;
 }
 
-.record-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 
 .no-data {
   color: #eaf3de;
