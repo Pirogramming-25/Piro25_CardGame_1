@@ -1,26 +1,44 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}마이페이지 | Piro25 card battle{% endblock %}
+
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'css/accounts.css' %}">
 {% endblock %}
 
 {% block content %}
-<section class="auth-page">
+<section class="auth-page profile-page">
     <div class="profile-card">
         <h1 class="auth-title">마이페이지</h1>
 
-        <p class="profile-greeting">
-            안녕하세요, <strong>{{ user.username }}</strong>님!
-        </p>
+        <div class="profile-content">
+            <p class="profile-greeting">
+                안녕하세요,
+                <strong>{{ user.username }}</strong>님!
+            </p>
 
-        <p class="profile-description">
-            이 페이지는 로그인한 사용자만 볼 수 있습니다.
-        </p>
+            <p class="profile-description">
+                이 페이지는 로그인한 사용자만 볼 수 있습니다.
+            </p>
 
-        <p class="profile-score">
-            현재 점수: {{ user.score }}점
-        </p>
+            <div class="profile-score-box">
+                <span class="profile-score-label">현재 점수</span>
+                <strong class="profile-score">
+                    {{ user.score }}점
+                </strong>
+            </div>
+
+            <div class="profile-actions">
+                <a href="#" class="profile-action-button">
+                    게임하러 가기
+                </a>
+
+                <a href="#" class="profile-action-button profile-action-secondary">
+                    랭킹 보기
+                </a>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}
