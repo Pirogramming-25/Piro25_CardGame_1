@@ -4,41 +4,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}숫자 카드 배틀{% endblock %}</title>
+  <title>{% block title %}Piro25 card battle{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/quiple/galmuri/dist/galmuri.css">
   <link rel="stylesheet" href="{% static 'css/reset.css' %}">
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
   {% block extra_head %}{% endblock %}
 </head>
 <body>
 
-  <header>
-    <a href="{% url 'game_list' %}" class="logo">Piro25 card game</a>
+  <!-- 배경 격자 + 고정 장식 요소 (모든 페이지 공통, 스크롤과 무관하게 고정) -->
+  <div class="bg-grid"></div>
+  <div class="bg-decor">
+    <span class="decor square" style="top: 6%; left: 7%;">■</span>
+    <span class="decor square" style="top: 15%; left: 3%; font-size: 15px;">■</span>
+    <span class="decor cross" style="top: 12%; left: 15%;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <path d="M17.6299 10.3701H28V17.6299H17.6299V28H10.3701V17.6299H0V10.3701H10.3701V0H17.6299V10.3701Z" fill="#D9D9D9"/>
+    </svg></span>
+    <span class="decor square" style="top: 28%; left: 8%; ">■</span>
+    <span class="decor square" style="top: 8%; right: 6%;">■</span>
+    <span class="decor cross" style="top: 18%; right: 3%;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M12.5928 7.40723H20V12.5928H12.5928V20H7.40723V12.5928H0V7.40723H7.40723V0H12.5928V7.40723Z" fill="#D9D9D9"/>
+    </svg></span>
+    <span class="decor square" style="top: 37%; right: 10%;">■</span>
+    <span class="decor square" style="top: 26%; right: 12%; font-size: 15px;">■</span>
+    <span class="decor square" style="bottom: 18%; left: 12%; font-size: 15px;">■</span>
+    <span class="decor square" style="bottom: 40%; left: 8%; font-size: 15px;">■</span>
+    <span class="decor cross" style="bottom: 8%; left: 18%;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M12.5928 7.40723H20V12.5928H12.5928V20H7.40723V12.5928H0V7.40723H7.40723V0H12.5928V7.40723Z" fill="#D9D9D9"/>
+    </svg></span>
+    <span class="decor square" style="bottom: 4%; left: 5%; font-size: 15px;">■</span>
+    <span class="decor cross" style="bottom: 30%; right: 8%;"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+        <path d="M12.466 7.33288L19.7988 9.91189e-05L24.9322 5.13353L17.5994 12.4663L24.9322 19.7991L19.7988 24.9325L12.466 17.5997L5.1332 24.9325L-0.000227753 19.7991L7.33255 12.4663L-0.000227753 5.13353L5.1332 9.91189e-05L12.466 7.33288Z" fill="#D9D9D9"/>
+    </svg></span>
+    <span class="decor square" style="bottom: 15%; right: 4%;">■</span>
+    <span class="decor square" style="bottom: 8%; right: 10%; font-size: 15px;">■</span>
+    <span class="decor cross" style="top: 40%; left: 4%;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M8.90434 5.23768L14.142 -1.63939e-05L17.8088 3.66672L12.5711 8.90442L17.8088 14.1421L14.142 17.8089L8.90434 12.5712L3.66664 17.8089L-9.29263e-05 14.1421L5.23761 8.90442L-9.29263e-05 3.66672L3.66664 -1.63939e-05L8.90434 5.23768Z" fill="#D9D9D9"/>
+    </svg></span>
+  </div>
 
-    <nav>
-      {% if user.is_authenticated %}
-        <a href="{% url 'game_list' %}">게임하기</a>
-        <a href="{% url 'ranking' %}">랭킹보기</a>
-        <span class="user-info">{{ user.username }}님</span>
-        <a href="{% url 'logout' %}">로그아웃</a>
-      {% else %}
-        <a href="{% url 'login' %}">로그인</a>
-        <a href="{% url 'signup' %}">회원가입</a>
-      {% endif %}
-    </nav>
-  </header>
+  <!-- 초록 창 프레임: 헤더 스타일 공통 적용 영역 -->
+  <div class="game-window">
 
-  <main>
-    {% block content %}
-    {% endblock %}
-  </main>
+    <!-- 맨 위 얇은 chrome bar: 창 컨트롤 아이콘만 (진짜 OS 창 느낌) -->
+    <div class="window-chrome" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" fill="#180F28"/>
+        <rect x="4" y="16" width="14" height="2" fill="#C7FD97"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect width="22" height="22" fill="#180F28"/>
+        <rect width="22" height="22" fill="#180F28"/>
+        <rect x="9" y="5" width="9" height="9" fill="#180F28" stroke="#C7FD97" stroke-width="2"/>
+        <path d="M13 9V18H4V9H13Z" fill="#180F28" stroke="#C7FD97" stroke-width="2"/>
+      </svg>
+      <span class="ctrl-btn">&#10005;</span>
+    </div>
 
-  <!-- <footer>
-    <p>&copy; 25기 1조 숫자 카드 배틀. All rights reserved.</p>
-    <p>
-      <a href="{% url 'game_list' %}">게임 리스트</a> ·
-      <a href="{% url 'ranking' %}">랭킹</a>
-    </p>
-  </footer> -->
+    <!-- chrome bar 아래, 창 내부에 위치하는 제목 + nav -->
+    <div class="window-titlebar">
+      <a href="{% url 'game_list' %}" class="logo">Piro25 card battle</a>
+
+      <nav>
+        {% if user.is_authenticated %}
+          <a href="{% url 'game_list' %}">게임하기</a>
+          <a href="{% url 'ranking' %}">랭킹보기</a>
+          <span class="user-info">{{ user.username }}님</span>
+          <form action="{% url 'logout' %}" method="post" class="logout-form">
+            {% csrf_token %}
+            <button type="submit" class="logout-button">로그아웃</button>
+          </form>
+        {% else %}
+          <a href="{% url 'login' %}">로그인</a>
+          <a href="{% url 'signup' %}">회원가입</a>
+        {% endif %}
+      </nav>
+    </div>
+
+    <main class="window-body">
+      {% block content %}
+      {% endblock %}
+    </main>
+
+  </div>
 
   {% block extra_scripts %}{% endblock %}
 </body>
