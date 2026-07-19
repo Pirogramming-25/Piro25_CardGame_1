@@ -1,15 +1,96 @@
 /* 공통 인증 화면 */
-.auth-page {}
-.auth-card {}
-.auth-title {}
+.auth-page {
+    width: 100%;
+    min-height: 420px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 36px;
+
+    border: 2px solid #c7fd97;
+    border-radius: 8px;
+
+    background-color: #180f28;
+    color: #ffffff;
+}
+.auth-title {
+    margin-bottom: 28px;
+
+    color: #c7fd97;
+
+    font-family: "Jersey 10", sans-serif;
+    font-size: 42px;
+    text-align: center;
+}
 
 /* 로그인·회원가입 공통 폼 */
-.auth-form {}
-.auth-submit-button {}
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.auto-form p {
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.auth-form input {
+    width: 100%;
+    height: 44px;
+    padding: 0 12px;
+
+    border: 1px solid #c7fd97;
+    border-radius: 5px;
+
+    background-color: #241635;
+    color: #ffffff;
+}
+.auth-submit-button {
+    width: 100%;
+    height: 46px;
+
+    border: none;
+    border-radius: 6px;
+
+    background-color: #c7fd97;
+    color: #180f28;
+
+    font-weight: 700;
+    cursor: pointer;
+}
 
 /* 로그인 전용 */
-.auth-divider {}
-.kakao-login-button {}
+.auth-divider {
+    margin: 24px 0;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.auth-divider hr {
+    flex: 1;
+}
+.kakao-login-button {
+    width: 100%;
+    height: 46px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 6px;
+
+    background-color: #fee500;
+    color: #000000;
+    text-decoration: none;
+}
 
 /* 프로필 전용 */
 .profile-card {}
