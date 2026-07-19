@@ -1,2 +1,177 @@
 /* ranking 페이지 css */
 /* 전체 틀 만든 뒤에 필요하다면 작성할 예정 */
+.ranking-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.ranking-header{
+  display:flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ranking-crown {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.ranking-crown svg {
+  width: 56px;
+  height: 46px;
+  filter: drop-shadow(0 0 8px rgba(199, 253, 151, 0.6));
+}
+
+.ranking-title {
+  color: #c7fd97;
+  font-size: 45px;
+  text-transform: lowercase;
+  font-family: 'Jersey 10';
+  text-shadow: 0 0 10px #c7fd97a7;
+  margin-bottom: 40px;
+}
+
+
+
+.ranking-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 48px;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.rank-info {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.rank-num,
+.rank-name {
+    font-family: 'Jersey 10';
+}
+
+.rank-score {
+    font-family: 'Jersey 10';
+}
+
+/* 순위별 크기 / 색 / 광량 차등 */
+.ranking-item:nth-child(1) .rank-num,
+.ranking-item:nth-child(1) .rank-name {
+  color: #c7fd97;
+  font-size: 40px;
+  text-shadow: 0 0 10px #c7fd97a7;
+}
+.ranking-item:nth-child(1) .rank-score {
+  font-size: 35px;
+  color: #ffffff;
+  text-shadow: 0 0 10px #ffffffa7;
+}
+
+.ranking-item:nth-child(2) .rank-num,
+.ranking-item:nth-child(2) .rank-name {
+  color: #c7fd97;
+  font-size: 35px;
+}
+.ranking-item:nth-child(2) .rank-score {
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.ranking-item:nth-child(3) .rank-num,
+.ranking-item:nth-child(3) .rank-name {
+  color: #c7fd97;
+  font-size: 30px;
+}
+.ranking-item:nth-child(3) .rank-score {
+  font-size: 25px;
+  color: #ffffff;
+}
+
+.ranking-item:nth-child(4) .rank-num,
+.ranking-item:nth-child(4) .rank-name {
+  color: #ffffff;
+  font-size: 25px;
+}
+.ranking-item:nth-child(4) .rank-score {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.ranking-item:nth-child(5) .rank-num,
+.ranking-item:nth-child(5) .rank-name {
+  color:  rgba(255, 255, 255, 0.50);
+  font-size: 20px;
+}
+.ranking-item:nth-child(5) .rank-score {
+  font-size: 17px;
+  color:  rgba(255, 255, 255, 0.50);
+}
+
+/* 전적목록 버튼 */
+.record-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #c7fd97;
+  color: #17330a;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 18px 40px;
+  border-radius: 40px;
+  box-shadow: 0 0 20px rgba(199, 253, 151, 0.45);
+}
+
+.record-btn svg {
+  width: 16px;
+  height: 20px;
+}
+
+/* 버튼 옆에 겹쳐지는 유저 아바타 - HTML에 아래처럼 추가해주세요
+<span class="record-avatar">
+  <img src="..." alt="다희">
+</span>
+*/
+.record-avatar {
+  position: absolute;
+  right: -30px;
+  bottom: -14px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #17330a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.record-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.no-data {
+  color: #eaf3de;
+  text-align: center;
+  opacity: 0.6;
+  margin-bottom: 40px;
+  font-family: 'Galmuri9';
+}
