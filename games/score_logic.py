@@ -4,9 +4,12 @@ import random
 
 DRAW = "DRAW"
 
-
+# jhm : games/models.py랑 필드 이름 맞춤
+# attack_card -> attacker_card
+# defend_card -> defender_card
+# "FINISHED" -> "completed"
 def determine_winner(game):
-    if game.attack_card == game.defend_card:    #무승부
+    if game.attacker_card == game.defender_card:    #무승부
         game.higher_wins = None
         game.winner = None
         return None, None, None, None  # winner, loser, winner_card, loser_card
@@ -14,12 +17,14 @@ def determine_winner(game):
     higher_wins = random.choice([True, False]) #게임 기준 설정
     game.higher_wins = higher_wins
 
-    if game.attack_card > game.defend_card:
-        higher_player, higher_card = game.attacker, game.attack_card
-        lower_player, lower_card = game.defender, game.defend_card
+    if game.attacker_card > game.defender_card:
+        higher_player, higher_card = game.attacker, game.attacker_card
+        lower_player, lower_card = game.defender, game.defender_card
+  
     else:
-        higher_player, higher_card = game.defender, game.defend_card
-        lower_player, lower_card = game.attacker, game.attack_card
+        higher_player, higher_card = game.defender, game.defender_card
+  
+        lower_player, lower_card = game.attacker, game.attacker_card
 
     if higher_wins:
         winner, winner_card = higher_player, higher_card
@@ -45,5 +50,5 @@ def apply_score(winner, loser, winner_card, loser_card):
 def finish_game(game):
     winner, loser, winner_card, loser_card = determine_winner(game)
     apply_score(winner, loser, winner_card, loser_card)
-    game.status = "FINISHED"
+    game.status = "completed"
     game.save()
