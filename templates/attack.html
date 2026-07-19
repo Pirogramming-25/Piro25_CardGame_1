@@ -1,39 +1,39 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>공격 신청</title>
 
-    <link rel="stylesheet" href="{% static 'css/attack.css' %}">
-</head>
-<body>
+{% block content %}
 
-    <h1>공격 신청</h1>
+<link rel="stylesheet" href="{% static 'css/attack.css' %}">
 
-    <h2>랜덤 카드</h2>
+<h1>공격 신청</h1>
 
-    <div id="card-list">
-        <!-- JS가 카드 생성 -->
-    </div>
+<h2>랜덤 카드</h2>
 
-    <h2>공격할 유저</h2>
+<div id="card-list">
+    <!-- JS가 카드 생성 -->
+</div>
 
-    <select id="target-user">
-        <option value="">선택하세요</option>
-        <option value="1">user1</option>
-        <option value="2">user2</option>
-        <option value="3">user3</option>
-    </select>
 
-    <br><br>
+<h2>공격할 유저</h2>
 
-    <button id="attack-btn">
-        공격 신청
-    </button>
+<select id="target-user">
+    <option value="">선택하세요</option>
 
-    <script src="{% static 'js/attack.js' %}"></script>
+    {% for user in users %}
+        <option value="{{ user.id }}">
+            {{ user.username }}
+        </option>
+    {% endfor %}
 
-</body>
-</html>
+</select>
+
+<br><br>
+
+<button id="attack-btn">
+    공격 신청
+</button>
+
+
+<script src="{% static 'js/attack.js' %}"></script>
+
+{% endblock %}
