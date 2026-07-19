@@ -123,6 +123,7 @@
 
 /* 전적목록 버튼 */
 .record-btn {
+  font-family: 'Galmuri9';
   position: relative;
   display: inline-flex;
   align-items: center;

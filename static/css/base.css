@@ -117,17 +117,29 @@ body {
   color: #eaf3de;
   text-decoration: none;
   font-size: 13px;
-  font-family: Galmuri9;
+  font-family: 'Galmuri9';
+}
+
+.logout-button, .user-info{
+  color: #eaf3de;
+  text-decoration: none;
+  font-size: 13px;
+  font-family: 'Galmuri9';
 }
 
 .window-titlebar nav a:hover {
-  text-decoration: underline;
+  text-shadow: 0 0 10px #C7FD97;
   color: #c7fd97;
 }
 
-.window-titlebar .user-info {
-  color: #eaf3de;
-  font-size: 13px;
+.logout-button:hover {
+  text-shadow: 0 0 10px #C7FD97;
+  color: #c7fd97;
+}
+
+.user-info:hover{
+  text-shadow: 0 0 10px #C7FD97;
+  color: #c7fd97;
 }
 
 .ctrl-btn {
