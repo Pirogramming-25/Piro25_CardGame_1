@@ -56,12 +56,13 @@
 
 .current-player {
     color: #eaf3de;
+    font-family: 'Jersey 10', 'Galmuri9', sans-serif;
     margin-bottom: 30px;
 }
 
 .window-body h2 {
     color: #C7FD97;
-    font-family: 'Jersey 10', sans-serif;
+    font-family: 'Jersey 10', 'Galmuri9', sans-serif;
     font-size: 20px;
     margin-top: 30px;
     margin-bottom: 12px;
@@ -84,7 +85,7 @@
 }
 
 .request-label {
-    font-family: 'Jersey 10', sans-serif;
+    font-family: 'Jersey 10', 'Galmuri9', sans-serif;
     font-size: 18px;
     color: #eaf3de;
 }
@@ -144,9 +145,9 @@
 }
 
 .request-result {
-    font-family: 'Jersey 10', sans-serif;
-    font-size: 16px;
-    padding: 4px 14px;
+    font-family: 'Jersey 10', 'Galmuri9', sans-serif;
+    font-size: 14px;
+    padding: 5px 14px;
     border-radius: 10px;
 }
 
@@ -192,6 +193,10 @@
     box-shadow: 0 0 30px rgba(199, 253, 151, 0.5);
     font-family: 'Galmuri9', sans-serif;
     color: #eaf3de;
+}
+
+#detail-attacker, #detail-defender{
+    font-family: 'Jersey 10', 'Galmuri9', sans-serif;
 }
 
 .counter-modal h3 {
@@ -263,7 +268,7 @@
 }
 
 .match-detail-modal h3 {
-    font-family: 'Jersey 10', sans-serif;
+    font-family: 'Jersey 10', 'Galmuri9', sans-serif;
     color: #C7FD97;
     font-size: 22px;
     margin-bottom: 14px;
@@ -271,7 +276,7 @@
 }
 
 .match-players {
-    font-family: 'Jersey 10', sans-serif;
+    font-family: 'Jersey 10', 'Galmuri9', sans-serif;
     font-size: 16px;
     margin-bottom: 20px;
 }
@@ -299,10 +304,11 @@
 .match-card-label {
     font-size: 12px;
     color: #a9a9a9;
+    font-family: 'Jersey 10','Galmuri9', sans-serif;
 }
 
 .match-card-value {
-    font-family: 'Jersey 10', sans-serif;
+    font-family: 'Jersey 10','Galmuri9', sans-serif;
     font-size: 34px;
     color: #C7FD97;
 }
@@ -325,18 +331,20 @@
 }
 
 .match-vs {
-    font-family: 'Jersey 10', sans-serif;
+    font-family: 'Jersey 10', 'Galmuri9', sans-serif;
     font-size: 18px;
     color: #eaf3de;
 }
 
 .match-criteria,
 .match-winner {
+    font-family: 'Jersey 10', 'Galmuri9', sans-serif;
     font-size: 13px;
     margin-bottom: 8px;
 }
 
 .match-winner {
+    font-family: 'Jersey 10', 'Galmuri9', sans-serif;
     color: #C7FD97;
     font-weight: bold;
 }
@@ -349,7 +357,7 @@
     border: 2px solid #C7FD97;
     border-radius: 20px;
     color: #C7FD97;
-    font-family: 'Jersey 10', sans-serif;
+    font-family: 'Jersey 10','Galmuri9',  sans-serif;
     font-size: 16px;
     cursor: pointer;
     transition: 0.2s;
