@@ -71,7 +71,9 @@
         {% if user.is_authenticated %}
           <a href="{% url 'game_list' %}">게임하기</a>
           <a href="{% url 'ranking' %}">랭킹보기</a>
-          <span class="user-info">{{ user.username }}님</span>
+          <a href="{% url 'profile' %}" class="user-info">
+            {{ user.username }}님
+          </a>
           <form action="{% url 'logout' %}" method="post" class="logout-form">
             {% csrf_token %}
             <button type="submit" class="logout-button">로그아웃</button>
