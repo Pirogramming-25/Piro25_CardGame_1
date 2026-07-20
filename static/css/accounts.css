@@ -153,7 +153,24 @@
     line-height: 1.5;
 }
 
+/* 로그인 실패 오류 문구 */
+.auth-form .errorlist.nonfield {
+    margin: 0 0 6px;
+    padding: 0;
 
+    color: #ff8585;
+
+    font-family: "Galmuri9", sans-serif;
+    font-size: 8px;
+    line-height: 2;
+
+    list-style: none;
+}
+
+.auth-form .errorlist.nonfield li {
+    margin: 0;
+    font-family: "Galmuri9", sans-serif;
+}
 /* =========================
    비밀번호 안내
 ========================= */
