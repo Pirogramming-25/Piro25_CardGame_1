@@ -5,19 +5,27 @@
 
 <link rel="stylesheet" href="{% static 'css/attack.css' %}">
 
-<h1>공격 신청</h1>
 
-<h2>랜덤 카드</h2>
+
+
+
+
 
 <div id="card-list">
     <!-- JS가 카드 생성 -->
 </div>
 
 
-<h2>공격할 유저</h2>
+
+<h2>TARGET USER</h2>
+
 
 <select id="target-user">
-    <option value="">선택하세요</option>
+
+    <option value="">
+        SELECT USER
+    </option>
+
 
     {% for user in users %}
         <option value="{{ user.id }}">
@@ -25,15 +33,23 @@
         </option>
     {% endfor %}
 
+
 </select>
 
-<br><br>
+
+<form id="csrf-form">
+    {% csrf_token %}
+</form>
+
+
 
 <button id="attack-btn">
-    공격 신청
+    ATTACK!
 </button>
 
 
+
 <script src="{% static 'js/attack.js' %}"></script>
+
 
 {% endblock %}
