@@ -10,7 +10,7 @@ def signup(request):
         if form.is_valid():                # 입력값이 유효하면
             user = form.save()             # DB에 사용자 저장
             login(request, user, backend="django.contrib.auth.backends.ModelBackend")           # 가입 즉시 로그인 처리 (세션 생성)
-            return redirect("profile")     # urls.py의 profile 주소로 이동
+            return redirect("main")     # urls.py의 main 주소로 이동
     else:                                  # 처음 페이지에 접근했을 때 (GET)
         form = CustomUserCreationForm()          # 빈 폼 생성
     return render(request, "accounts/signup.html", {"form": form})
