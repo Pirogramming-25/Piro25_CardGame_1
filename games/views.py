@@ -58,13 +58,13 @@ def attack_request(request):
 
 # jhm: 다른 유저에게 요청받은 대결 목록 조회
 @login_required
-def received_requests(request):
+def game_list(request):
   requests = AttackRequest.objects.filter(
     defender = request.user,
     status="waiting",
   )
   
-  return render(request, "received_requests.html", {
+  return render(request, "game_list.html", {
     "requests": requests,
   })
   
