@@ -71,6 +71,119 @@ document.querySelectorAll(".counter-attack-btn").forEach(btn => {
 
 
 // ===============================
+// 취소 버튼 클릭 -> 보낸 공격 취소
+// ===============================
+
+document.querySelectorAll(".cancel-attack-btn").forEach(btn => {
+    btn.onclick = function () {
+
+        if (!confirm("공격 신청을 취소하시겠습니까?")) {
+            return;
+        }
+
+        fetch(`/games/cancel/${btn.dataset.attackId}/`, {
+
+            method: "POST",
+
+            headers: {
+                "X-CSRFToken": csrftoken
+            }
+
+        })
+
+        .then(response => response.json())
+
+        .then(data => {
+
+            if (data.error) {
+                alert(data.error);
+                return;
+            }
+
+            alert(data.message);
+            window.location.href = "/games/game_list/";
+
+        })
+
+        .catch(error => {
+            console.log(error);
+            alert("취소 실패");
+        });
+
+    };
+});
+
+
+// ===============================
+// 대결 상세 모달
+// ===============================
+
+const finishedMatches = JSON.parse(
+    document.getElementById("finished-matches-data").textContent
+);
+
+const matchDetailOverlay = document.getElementById("match-detail-overlay");
+
+
+function formatChange(value) {
+    if (value > 0) return `+${value}`;
+    if (value < 0) return `${value}`;
+    return "±0";
+}
+
+
+function changeClass(value) {
+    if (value > 0) return "positive";
+    if (value < 0) return "negative";
+    return "neutral";
+}
+
+
+function openMatchDetail(match) {
+    document.getElementById("detail-attacker").textContent = match.attacker;
+    document.getElementById("detail-defender").textContent = match.defender;
+
+    document.getElementById("detail-attacker-card").textContent = match.attacker_card;
+    document.getElementById("detail-defender-card").textContent = match.defender_card;
+
+    const attackerChangeEl = document.getElementById("detail-attacker-change");
+    attackerChangeEl.textContent = formatChange(match.attacker_change);
+    attackerChangeEl.className = "match-card-change " + changeClass(match.attacker_change);
+
+    const defenderChangeEl = document.getElementById("detail-defender-change");
+    defenderChangeEl.textContent = formatChange(match.defender_change);
+    defenderChangeEl.className = "match-card-change " + changeClass(match.defender_change);
+
+    document.getElementById("detail-criteria").textContent = match.criteria_text;
+
+    document.getElementById("detail-winner").textContent = match.is_draw
+        ? "승자 없음"
+        : `${match.winner} 승리`;
+
+    matchDetailOverlay.classList.remove("hidden");
+}
+
+
+document.querySelectorAll(".match-detail-btn").forEach(btn => {
+    btn.onclick = function () {
+        openMatchDetail(finishedMatches[Number(btn.dataset.index)]);
+    };
+});
+
+
+document.getElementById("match-detail-close-btn").onclick = function () {
+    matchDetailOverlay.classList.add("hidden");
+};
+
+
+matchDetailOverlay.onclick = function (event) {
+    if (event.target === matchDetailOverlay) {
+        matchDetailOverlay.classList.add("hidden");
+    }
+};
+
+
+// ===============================
 // 오버레이 바깥 클릭 -> 모달 닫기
 // ===============================
 
