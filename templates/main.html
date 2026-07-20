@@ -13,7 +13,7 @@
         <p class="main-subtitle">hello, <span class="main-user-info">{{ user.username }}</span>! Do you want to play the game?</p>
         <div class="main-button">
             <a href="{% url 'attack_page' %}" class="main-cta-button">start</a>
-            <a href="#" class="main-cta-button">list</a>
+            <a href="{% url 'game_list' %}" class="main-cta-button">list</a>
         </div>
     {% else %}
         <p class="main-subtitle">Do you want to play the game?</p>

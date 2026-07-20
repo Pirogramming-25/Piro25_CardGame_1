@@ -39,7 +39,7 @@
     </ol>
     <p class="no-data" id="no-data-msg" {% if ranked_users %}style="display:none;"{% endif %}>아직 랭킹 데이터가 없어요.</p>
 
-    <a href="#" class="record-btn"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="24" viewBox="0 0 19 24" fill="none">
+    <a href="{% url 'game_list' %}" class="record-btn"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="24" viewBox="0 0 19 24" fill="none">
         <path d="M17.355 14.1048C19.1047 12.9142 19.1047 10.3349 17.355 9.14425L4.6877 0.524829C2.69606 -0.83038 0 0.596099 0 3.00509V20.2439C0 22.6529 2.69605 24.0794 4.68769 22.7242L17.355 14.1048Z" fill="currentColor"/>
     </svg> 전적 목록</a>
 </div>
