@@ -1,0 +1,143 @@
+/* 게임 목록 페이지 전체 */
+.window-body {
+    font-family: 'Galmuri9', sans-serif;
+}
+
+.window-body h1 {
+    color: #C7FD97;
+    font-family: 'Jersey 10', sans-serif;
+    font-size: 32px;
+    text-shadow: 0 0 10px #C7FD97;
+    margin-bottom: 10px;
+}
+
+.current-player {
+    color: #eaf3de;
+    margin-bottom: 30px;
+}
+
+/* 요청 목록 (임시 - 추후 디자인 예정) */
+.request-list {
+    list-style: none;
+}
+
+.request-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    background: rgba(199, 253, 151, 0.06);
+    border: 2px solid rgba(199, 253, 151, 0.3);
+    border-radius: 10px;
+}
+
+.request-label {
+    font-family: 'Jersey 10', sans-serif;
+    font-size: 18px;
+    color: #eaf3de;
+}
+
+.no-request {
+    color: #a9a9a9;
+    font-family: 'Galmuri9', sans-serif;
+}
+
+.counter-attack-btn {
+    padding: 8px 20px;
+    background: #C7FD97;
+    border: none;
+    border-radius: 12px;
+    color: #120c21;
+    font-family: 'Jersey 10', sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.counter-attack-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #C7FD97;
+}
+
+/* ===============================
+   반격 모달
+   =============================== */
+
+.hidden {
+    display: none !important;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.counter-modal {
+    background: #18112f;
+    border: 4px solid #C7FD97;
+    border-radius: 20px;
+    padding: 40px 45px;
+    width: 300px;
+    box-shadow: 0 0 30px rgba(199, 253, 151, 0.5);
+    font-family: 'Galmuri9', sans-serif;
+    color: #eaf3de;
+}
+
+.counter-modal h3 {
+    font-family: 'Jersey 10', sans-serif;
+    color: #C7FD97;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(199, 253, 151, 0.6);
+}
+
+.counter-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 30px;
+}
+
+.counter-card-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-family: 'Jersey 10', sans-serif;
+    font-size: 22px;
+}
+
+.counter-card-option input[type="radio"] {
+    accent-color: #C7FD97;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+#counter-attack-submit-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 30px;
+    background: #C7FD97;
+    border: none;
+    border-radius: 20px;
+    color: #120c21;
+    font-family: 'Jersey 10', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 15px #C7FD97;
+    transition: 0.2s;
+}
+
+#counter-attack-submit-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #C7FD97;
+}
