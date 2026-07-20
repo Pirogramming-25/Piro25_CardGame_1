@@ -13,16 +13,21 @@
 
 .main-subtitle {
   color: #eaf3de;
-  font-family: 'Jersey 10';
+  font-family: 'Jersey 10', 'Galmuri9' ;
   font-size: 30px;
   margin-bottom: 32px;
 }
 
 .main-user-info{
   color:#c7fd97;
-  font-family: 'Jersey 10';
+  font-family: 'Jersey 10', 'Galmuri9' ;
   font-size: 30px;
+}
 
+/* 한글로 인식된 부분만 다른 폰트/크기 적용 (ko-wrap.js가 자동으로 감싸줌) */
+.main-user-info .ko-text {
+  font-family: 'Galmuri9';
+  font-size: 0.7em; /* main-user-info 기준 상대값. 원하는 배율로 조절 */
 }
 
 .main-button{

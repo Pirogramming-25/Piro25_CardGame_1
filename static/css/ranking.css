@@ -1,5 +1,9 @@
 /* ranking 페이지 css */
 /* 전체 틀 만든 뒤에 필요하다면 작성할 예정 */
+.window-body {
+    padding: 50px 40px 60px;
+}
+
 .ranking-card {
   display: flex;
   flex-direction: column;
@@ -33,7 +37,7 @@
   text-transform: lowercase;
   font-family: 'Jersey 10';
   text-shadow: 0 0 10px #c7fd97a7;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 
@@ -44,12 +48,26 @@
   align-items: center;
   gap: 15px;
   margin-bottom: 48px;
+
+  width: 100%;
+  max-height: 210px; /* 원하는 높이로 조절 */
+  overflow-y: auto;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.ranking-list::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 .ranking-item {
   display: flex;
   align-items: baseline;
   gap: 14px;
+  flex-shrink: 0;
 }
 
 .rank-info {
@@ -67,7 +85,15 @@
     font-family: 'Jersey 10';
 }
 
-/* 순위별 크기 / 색 / 광량 차등 */
+/* 유저 이름 중 한글로 인식된 부분만 다른 폰트/크기 (ko-wrap.js가 자동으로 감싸줌)
+   em 단위라 1~5위 이후 각 크기에 비례해서 자동으로 맞춰짐 */
+.rank-name .ko-text {
+  font-family: 'Galmuri9';
+  font-size: 0.7em;
+}
+
+/* 순위별 크기 / 색 / 광량 차등
+   1~4위는 각각 다른 스타일, 5위부터는 전부 동일한 스타일(:nth-child(n+5))을 공유 */
 .ranking-item:nth-child(1) .rank-num,
 .ranking-item:nth-child(1) .rank-name {
   color: #c7fd97;
@@ -110,12 +136,13 @@
   color: #ffffff;
 }
 
-.ranking-item:nth-child(5) .rank-num,
-.ranking-item:nth-child(5) .rank-name {
+/* 5위부터 마지막 순위까지 전부 동일한 스타일 적용 (:nth-child(n+5)) */
+.ranking-item:nth-child(n+5) .rank-num,
+.ranking-item:nth-child(n+5) .rank-name {
   color:  rgba(255, 255, 255, 0.50);
   font-size: 20px;
 }
-.ranking-item:nth-child(5) .rank-score {
+.ranking-item:nth-child(n+5) .rank-score {
   font-size: 17px;
   color:  rgba(255, 255, 255, 0.50);
 }

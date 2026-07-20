@@ -26,6 +26,11 @@
                 '</li>'
             );
         }).join('');
+
+        // 새로 그린 유저 이름에도 한글 wrap 다시 적용
+        if (window.wrapKoreanText) {
+            listEl.querySelectorAll('.rank-name').forEach(window.wrapKoreanText);
+        }
     }
 
     function fetchRanking() {
