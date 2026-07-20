@@ -145,8 +145,8 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 AUTH_USER_MODEL = "accounts.User"
 
 # settings.py 맨 하단에 추가
-LOGIN_REDIRECT_URL = "profile"   # 로그인 성공 후 이동할 곳(urls.py의 profile 주소)
-LOGOUT_REDIRECT_URL = "login"    # 로그아웃 후 이동할 곳(urls.py의 login 주소)
+LOGIN_REDIRECT_URL = "main"   # 로그인 성공 후 이동할 곳(urls.py의 main 주소)
+LOGOUT_REDIRECT_URL = "main"    # 로그아웃 후 이동할 곳(urls.py의 main 주소)
 LOGIN_URL = "login"              # @login_required 걸린 페이지 접근 시 이동할 곳
 
 SOCIALACCOUNT_PROVIDERS = {
