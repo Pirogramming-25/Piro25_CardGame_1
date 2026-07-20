@@ -32,7 +32,7 @@ def get_random_cards(request):
         "cards": cards
     })
 
-
+@login_required
 def attack_request(request):
     if request.method != "POST":
         return JsonResponse(
