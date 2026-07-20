@@ -148,6 +148,8 @@ document.getElementById("attack-btn")
 
         alert(data.message);
 
+        window.location.href = "/games/game_list/";
+
 
     })
 

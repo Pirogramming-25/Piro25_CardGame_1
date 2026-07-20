@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/game_list.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h1>History List</h1>
+
+<p class="current-player">현재 플레이어 : <strong>{{ user.username }}</strong></p>
+
+<h2>받은 공격 요청</h2>
+<ul class="request-list">
+    {% for req in received_requests %}
+    <li class="request-item">
+        <span class="request-label">{{ req.attacker.username }} → {{ user.username }}</span>
+        <button class="counter-attack-btn" data-attack-id="{{ req.id }}">CounterAttack</button>
+    </li>
+    {% empty %}
+    <li class="no-request">받은 공격 요청이 없습니다.</li>
+    {% endfor %}
+</ul>
+
+<h2>보낸 공격 요청 (상대 응답 대기중)</h2>
+<ul class="request-list">
+    {% for req in sent_requests %}
+    <li class="request-item">
+        <span class="request-label">{{ user.username }} → {{ req.defender.username }}</span>
+        <span class="request-status">진행 중...</span>
+        <button class="cancel-attack-btn" data-attack-id="{{ req.id }}">공격 취소</button>
+    </li>
+    {% empty %}
+    <li class="no-request">보낸 공격 요청이 없습니다.</li>
+    {% endfor %}
+</ul>
+
+<h2>완료된 대결</h2>
+<ul class="request-list finished-list">
+    {% for match in finished_matches %}
+    <li class="request-item">
+        <span class="request-label">{{ match.attacker }} VS {{ match.defender }}</span>
+        {% if match.is_draw %}
+        <span class="request-result draw">무승부</span>
+        {% elif match.my_result == "승리" %}
+        <span class="request-result win">승리</span>
+        {% else %}
+        <span class="request-result lose">패배</span>
+        {% endif %}
+        <button class="match-detail-btn" data-index="{{ forloop.counter0 }}">상세보기</button>
+    </li>
+    {% empty %}
+    <li class="no-request">완료된 대결이 없습니다.</li>
+    {% endfor %}
+</ul>
+
+{{ finished_matches|json_script:"finished-matches-data" }}
+
+<form id="csrf-form">
+    {% csrf_token %}
+</form>
+
+<!-- 반격 모달 -->
+<div id="counter-modal-overlay" class="modal-overlay hidden" data-current-user="{{ user.username }}">
+    <div class="counter-modal">
+        <h3>반격할 카드 :</h3>
+
+        <div id="counter-card-list" class="counter-card-list">
+            <!-- JS가 카드 라디오 생성 -->
+        </div>
+
+        <button id="counter-attack-submit-btn">CounterAttack</button>
+    </div>
+</div>
+
+<!-- 대결 상세 모달 -->
+<div id="match-detail-overlay" class="modal-overlay hidden">
+    <div class="match-detail-modal">
+        <h3>대결 결과</h3>
+
+        <p class="match-players">
+            <span id="detail-attacker"></span> VS <span id="detail-defender"></span>
+        </p>
+
+        <div class="match-cards">
+            <div class="match-card-box">
+                <span class="match-card-label">공격자</span>
+                <span class="match-card-value" id="detail-attacker-card"></span>
+                <span class="match-card-change" id="detail-attacker-change"></span>
+            </div>
+
+            <span class="match-vs">VS</span>
+
+            <div class="match-card-box">
+                <span class="match-card-label">수비자</span>
+                <span class="match-card-value" id="detail-defender-card"></span>
+                <span class="match-card-change" id="detail-defender-change"></span>
+            </div>
+        </div>
+
+        <p class="match-criteria" id="detail-criteria"></p>
+        <p class="match-winner" id="detail-winner"></p>
+
+        <button id="match-detail-close-btn">닫기</button>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'js/game_list.js' %}"></script>
+{% endblock %}
