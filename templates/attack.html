@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<meta name="csrf-token" content="{{ csrf_token }}">
+
+<link rel="stylesheet" href="{% static 'css/attack.css' %}">
+
+
+
+
+
+
+
+<div id="card-list">
+    <!-- JS가 카드 생성 -->
+</div>
+
+
+
+
+<select id="target-user">
+
+    <option value="">
+        target user
+    </option>
+
+
+    {% for user in users %}
+        <option value="{{ user.id }}">
+            {{ user.username }}
+        </option>
+    {% endfor %}
+
+
+</select>
+
+
+<form id="csrf-form">
+    {% csrf_token %}
+</form>
+
+
+
+<button id="attack-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="24" viewBox="0 0 19 24" fill="none">
+        <path d="M17.355 14.1048C19.1047 12.9142 19.1047 10.3349 17.355 9.14425L4.6877 0.524828C2.69606 -0.830379 0 0.5961 0 3.00509V20.2439C0 22.6529 2.69605 24.0794 4.68769 22.7242L17.355 14.1048Z" fill="#180F28"/>
+    </svg>
+    ATTACK
+</button>
+
+
+
+<script src="{% static 'js/attack.js' %}"></script>
+
+
+{% endblock %}

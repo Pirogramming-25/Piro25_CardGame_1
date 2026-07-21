@@ -1,0 +1,58 @@
+.main-hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.main-title {
+  color: #c7fd97;
+  font-size: 100px;
+  text-shadow: 0 0 14px rgba(199, 253, 151, 0.7);
+  font-family: 'Jersey 10';
+  margin-bottom: 20px;
+}
+
+.main-subtitle {
+  color: #eaf3de;
+  font-family: 'Jersey 10', 'Galmuri9' ;
+  font-size: 30px;
+  margin-bottom: 32px;
+}
+
+.main-user-info{
+  color:#c7fd97;
+  font-family: 'Jersey 10', 'Galmuri9' ;
+  font-size: 30px;
+}
+
+/* 한글로 인식된 부분만 다른 폰트/크기 적용 (ko-wrap.js가 자동으로 감싸줌) */
+.main-user-info .ko-text {
+  font-family: 'Galmuri9';
+  font-size: 0.7em; /* main-user-info 기준 상대값. 원하는 배율로 조절 */
+}
+
+.main-button{
+    display:flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-cta-button {
+  display: inline-block;
+  font-family: 'Jersey 10';
+  color: #c7fd97;
+  text-decoration: none;
+  font-size: 50px;
+  padding: 5px 20px;
+  border-radius: 10px;
+  border: 2.5px  solid #c7fd97;
+  box-shadow: 0 0 20px rgba(199, 253, 151, 0.45);
+  transition: transform 0.15s ease;
+}
+
+.main-cta-button:hover {
+  transform: translateY(-3px);
+  background-color: #c7fd97;
+  color:#120c21;
+}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/ranking.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="ranking-card">
+    <div class="ranking-header">
+        <div class="ranking-crown">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                <path d="M10 50C10 48.6739 10.5268 47.4021 11.4645 46.4645C12.4021 45.5268 13.6739 45 15 45H45C46.3261 45 47.5979 45.5268 48.5355 46.4645C49.4732 47.4021 50 48.6739 50 50V52.5C50 53.163 49.7366 53.7989 49.2678 54.2678C48.7989 54.7366 48.163 55 47.5 55H12.5C11.837 55 11.2011 54.7366 10.7322 54.2678C10.2634 53.7989 10 53.163 10 52.5V50Z" stroke="#C7FD97" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M31.1851 14.8575L35.1026 28.2075C35.2332 28.649 35.4831 29.0458 35.8248 29.3542C36.1666 29.6626 36.5868 29.8707 37.0393 29.9555C37.4917 30.0403 37.9588 29.9985 38.3891 29.8348C38.8193 29.6711 39.196 29.3917 39.4776 29.0275L46.0176 20.5225" stroke="#C7FD97" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M50 22.5L42.5 45" stroke="#C7FD97" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M13.9849 20.5225L20.5224 29.03C20.8041 29.3942 21.181 29.6734 21.6114 29.837C22.0418 30.0006 22.509 30.0421 22.9615 29.9571C23.414 29.872 23.8342 29.6636 24.1758 29.3549C24.5174 29.0462 24.7671 28.6491 24.8974 28.2075L28.8149 14.8575" stroke="#C7FD97" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M17.5 45L10 22.5" stroke="#C7FD97" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M30 15C32.7614 15 35 12.7614 35 10C35 7.23858 32.7614 5 30 5C27.2386 5 25 7.23858 25 10C25 12.7614 27.2386 15 30 15Z" stroke="#C7FD97" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M50 22.5C52.7614 22.5 55 20.2614 55 17.5C55 14.7386 52.7614 12.5 50 12.5C47.2386 12.5 45 14.7386 45 17.5C45 20.2614 47.2386 22.5 50 22.5Z" stroke="#C7FD97" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10 22.5C12.7614 22.5 15 20.2614 15 17.5C15 14.7386 12.7614 12.5 10 12.5C7.23858 12.5 5 14.7386 5 17.5C5 20.2614 7.23858 22.5 10 22.5Z" stroke="#C7FD97" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <h2 class="ranking-title">ranking</h2>
+    </div>
+
+
+    <ol class="ranking-list" id="ranking-list" data-ranking-url="{% url 'ranking_data' %}">
+        {% if ranked_users %}
+            {% for entry in ranked_users %}
+            <li class="ranking-item">
+                <span class="rank-info">
+                    <span class="rank-num">{{ entry.rank }}.</span>
+                    <span class="rank-name">{{ entry.user.username }}</span>
+                </span>
+                <span class="rank-score">score: {{ entry.user.score }}</span>
+            </li>
+            {% endfor %}
+        {% endif %}
+    </ol>
+    <p class="no-data" id="no-data-msg" {% if ranked_users %}style="display:none;"{% endif %}>아직 랭킹 데이터가 없어요.</p>
+
+    <a href="{% url 'game_list' %}" class="record-btn"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="24" viewBox="0 0 19 24" fill="none">
+        <path d="M17.355 14.1048C19.1047 12.9142 19.1047 10.3349 17.355 9.14425L4.6877 0.524829C2.69606 -0.83038 0 0.596099 0 3.00509V20.2439C0 22.6529 2.69605 24.0794 4.68769 22.7242L17.355 14.1048Z" fill="currentColor"/>
+    </svg> 전적 목록</a>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'js/ko-wrap.js' %}"></script>
+<script src="{% static 'js/ranking.js' %}"></script>
+{% endblock %}

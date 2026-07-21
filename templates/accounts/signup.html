@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}회원가입 | Piro25 card battle{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/accounts.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="auth-page signup-page">
+    <div class="auth-card signup-card">
+        <h1 class="auth-title">회원가입</h1>
+
+        <form method="post" class="auth-form signup-form" novalidate>
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="auth-error-box">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div class="auth-field">
+                <label for="{{ form.username.id_for_label }}">
+                    사용자 이름
+                </label>
+
+                {{ form.username }}
+
+                <p class="auth-help">
+                    150자 이하의 문자, 숫자, @, ., +, -, _만 사용할 수 있습니다.
+                </p>
+
+                {% for error in form.username.errors %}
+                    <p class="auth-error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="auth-field">
+                <label for="{{ form.password1.id_for_label }}">
+                    비밀번호
+                </label>
+
+                {{ form.password1 }}
+
+                {% for error in form.password1.errors %}
+                    <p class="auth-error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="password-guide">
+                <p>다른 개인정보와 비슷한 비밀번호는 사용할 수 없습니다.</p>
+                <p>최소 8자 이상 입력해 주세요.</p>
+                <p>자주 사용하는 비밀번호는 사용할 수 없습니다.</p>
+                <p>숫자로만 이루어진 비밀번호는 사용할 수 없습니다.</p>
+            </div>
+
+            <div class="auth-field">
+                <label for="{{ form.password2.id_for_label }}">
+                    비밀번호 확인
+                </label>
+
+                {{ form.password2 }}
+
+                <p class="auth-help">
+                    확인을 위해 이전과 동일한 비밀번호를 입력해 주세요.
+                </p>
+
+                {% for error in form.password2.errors %}
+                    <p class="auth-error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <button type="submit" class="auth-submit-button">
+                회원가입
+            </button>
+        </form>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,191 @@
+/* ranking 페이지 css */
+/* 전체 틀 만든 뒤에 필요하다면 작성할 예정 */
+.window-body {
+    padding: 50px 40px 60px;
+}
+
+.ranking-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.ranking-header{
+  display:flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ranking-crown {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.ranking-crown svg {
+  width: 56px;
+  height: 46px;
+  filter: drop-shadow(0 0 8px rgba(199, 253, 151, 0.6));
+}
+
+.ranking-title {
+  color: #c7fd97;
+  font-size: 45px;
+  text-transform: lowercase;
+  font-family: 'Jersey 10';
+  text-shadow: 0 0 10px #c7fd97a7;
+  margin-bottom: 30px;
+}
+
+
+.ranking-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 48px;
+
+  width: 100%;
+  max-height: 210px; /* 원하는 높이로 조절 */
+  overflow-y: auto;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.ranking-list::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.rank-info {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.rank-num,
+.rank-name {
+    font-family: "Jersey 10", "Galmuri9", sans-serif;
+}
+
+.rank-score {
+    font-family: 'Jersey 10';
+}
+
+/* 유저 이름 중 한글로 인식된 부분만 다른 폰트/크기 (ko-wrap.js가 자동으로 감싸줌)
+   em 단위라 1~5위 이후 각 크기에 비례해서 자동으로 맞춰짐 */
+.rank-name .ko-text {
+  font-family: 'Galmuri9';
+  font-size: 0.7em;
+}
+
+/* 순위별 크기 / 색 / 광량 차등
+   1~4위는 각각 다른 스타일, 5위부터는 전부 동일한 스타일(:nth-child(n+5))을 공유 */
+.ranking-item:nth-child(1) .rank-num,
+.ranking-item:nth-child(1) .rank-name {
+  color: #c7fd97;
+  font-size: 40px;
+  text-shadow: 0 0 10px #c7fd97a7;
+}
+.ranking-item:nth-child(1) .rank-score {
+  font-size: 35px;
+  color: #ffffff;
+  text-shadow: 0 0 10px #ffffffa7;
+}
+
+.ranking-item:nth-child(2) .rank-num,
+.ranking-item:nth-child(2) .rank-name {
+  color: #c7fd97;
+  font-size: 35px;
+}
+.ranking-item:nth-child(2) .rank-score {
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.ranking-item:nth-child(3) .rank-num,
+.ranking-item:nth-child(3) .rank-name {
+  color: #c7fd97;
+  font-size: 30px;
+}
+.ranking-item:nth-child(3) .rank-score {
+  font-size: 25px;
+  color: #ffffff;
+}
+
+.ranking-item:nth-child(4) .rank-num,
+.ranking-item:nth-child(4) .rank-name {
+  color: #ffffff;
+  font-size: 25px;
+}
+.ranking-item:nth-child(4) .rank-score {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+/* 5위부터 마지막 순위까지 전부 동일한 스타일 적용 (:nth-child(n+5)) */
+.ranking-item:nth-child(n+5) .rank-num,
+.ranking-item:nth-child(n+5) .rank-name {
+  color:  rgba(255, 255, 255, 0.50);
+  font-size: 20px;
+}
+.ranking-item:nth-child(n+5) .rank-score {
+  font-size: 17px;
+  color:  rgba(255, 255, 255, 0.50);
+}
+
+/* 전적목록 버튼 */
+.record-btn {
+  font-family: 'Galmuri9';
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #c7fd97;;
+  border: 2.5px  solid #c7fd97;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 18px 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(199, 253, 151, 0.45);
+  transition: transform 0.15s ease;
+}
+
+.record-btn:hover {
+  transform: translateY(-3px);
+  background: #c7fd97;
+  color:#120c21;
+}
+
+.record-btn svg {
+  width: 16px;
+  height: 20px;
+  fill:#c7fd97;
+}
+
+.record-btn svg:hover{
+  fill:#120c21;
+}
+
+
+.no-data {
+  color: #eaf3de;
+  text-align: center;
+  opacity: 0.6;
+  margin-bottom: 40px;
+  font-family: 'Galmuri9';
+}
